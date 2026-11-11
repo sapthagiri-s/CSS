@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Perfumy | Premium Fragrances</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <nav>
+            <h1>Perfumy</h1>
+
+            <ul>
+                <li>Home |</li>
+                <li>Products |</li>
+                <li>About |</li>
+                <li>Contact</li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="Searchbar">
+
+        <input type="text" placeholder="Search your favourite perfume...">
+
+        <!-- Category Filter -->
+        <div class="Category">
+
+            <select id="categoryFilter">
+
+                <option value="all">All Products</option>
+                <option value="men">Men's Perfume</option>
+                <option value="women">Women's Perfume</option>
+                <option value="unisex">Unisex Perfume</option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+    <!-- Products Section -->
+    <div class="Products">
+
+        <!-- Product 1 -->
+        <div class="box" data-category="women">
+
+            <img src="./Images/product1.jpg" alt="Marina Bae Perfume">
+
+            <p>FREED Marina Bae Perfume EDP | Saffron & Musk - 80 ml</p>
+
+            <a href="https://www.flipkart.com/freed-marina-bae-perfume-edp-saffron-musk-aqua-strong-long-lasting-fragrance-eau-de-parfum-80-ml/p/itm74b8779ad535a?pid=PERGTVCEASTXSH6W&lid=LSTPERGTVCEASTXSH6WSYCOPL&marketplace=FLIPKART" target="_blank" rel="noopener noreferrer">Product Link</a>
+
+        </div>
+
+        <!-- Product 2 -->
+        <div class="box" data-category="men">
+
+            <img src="./Images/product2.jpg" alt="Beardo Devil Oud">
+
+            <p>BEARDO Devil Oud Perfume | Woody & Oriental - 50 ml</p>
+
+            <a href="https://www.flipkart.com/beardo-devil-oud-perfume-men-woody-oriental-gift-husband-boyfriend-eau-de-parfum-50-ml/p/itma5623b110e715?pid=PERHPFZCDVDXHGNG&lid=LSTPERHPFZCDVDXHGNGS2J0J0&marketplace=FLIPKART" target="_blank" rel="noopener noreferrer">Product Link</a>
+
+        </div>
+
+        <!-- Product 3 -->
+        <div class="box" data-category="men">
+
+            <img src="./Images/product3.jpg" alt="Beardo Blue Blood">
+
+            <p>BEARDO Blue Blood Long Lasting Perfume - 30 ml</p>
+
+            <a href="https://www.flipkart.com/beardo-blue-blood-long-lasting-perfume-intense-aromatic-aquatic-premium-scent-eau-de-parfum-30-ml/p/itm787d663d092e1?pid=PERHGTBTN6V49WQ6&lid=LSTPERHGTBTN6V49WQ6KJDF7N&marketplace=FLIPKART" target="_blank" rel="noopener noreferrer">Product Link</a>
+
+        </div>
+        
+        <p id="noProducts" hidden>
+            No Products Found!
+        </p>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        
+        const categoryFilter = document.getElementById("categoryFilter");
+
+        const products = document.querySelectorAll(".box");
+
+        const noProducts = document.getElementById("noProducts");
+
+        categoryFilter.addEventListener("change", function () {
+
+            const selectedCategory = this.value;
+
+            let visibleCount = 0;
+
+            products.forEach(function (product) {
+
+                const productCategory = product.dataset.category;
+
+                if (
+                    selectedCategory === "all" ||
+                    selectedCategory === productCategory
+                ) {
+
+                    product.hidden = false;
+                    visibleCount++;
+
+                }
+                else {
+
+                    product.hidden = true;
+
+                }
+
+            });
+
+            if (visibleCount === 0) {
+                noProducts.hidden = false;
+            }
+            else {
+                noProducts.hidden = true;
+            }
+
+        });
+
+
+    </script>
+
+</body>
+</html>
